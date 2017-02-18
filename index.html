@@ -1,0 +1,316 @@
+<html>
+    <head>
+        <title>I'm Nico!</title>
+
+        <!-- CSS files -->
+        <link rel="stylesheet" href="Styles/style.css">
+        <link rel="stylesheet" href="Styles/bootstrap.css" />
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+
+        <!-- Javascript files -->
+        <script src="Scripts/jquery-3.1.1.min.js"></script>
+        <script src="Scripts/bootstrap.min.js"></script>
+        <script src="Scripts/script.js"></script>
+        <script src="Scripts/data.js"></script>
+        <script src="Scripts/d3.min.js"></script>
+    </head>
+
+    <body>
+        <div id="page-header" class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header hidden-sm">
+                    <a href="index.html" class="navbar-brand">
+                        Nico
+                    </a>
+
+                    <button id="navbarButton" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-options" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links to be shown -->
+                <div id="collapse-options" class="collapse navbar-collapse">
+                    <ul id="nav-list" class="nav navbar-nav">
+                        <li class="nav-item active">
+                            <a href="#main-section">hi!</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#skill-section">skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#project-section">projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#about-section">about</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contact-section">contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- THIS CODE IS COMMENTED DUE TO DEVELOPMENT TESTING. IT MUST NOT BE DELETED. -->
+        <!--<section id="main-section">
+            <div class="container">
+                <div id="main-content" class="row">
+                    <div class="col-sm-6" style="padding-top: 10%;">
+                        <p style="text-align: left; font-size: 3em;">Front End <br /> &emsp;Developer</p>
+                        <br />
+                        <p style="text-align: left;">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
+                    </div>
+                    <div class="col-sm-6" style="position: relative; height: 600px;">
+                        <img style="height: 600px; position: absolute;" id="photo" src="" alt="myself" class="img-responsive" />
+                    </div>
+                </div>
+            </div>
+        </section>-->
+
+        <div class="about">
+            <section id="skill-section">
+                <div class="container">
+                    <div class="row">
+                        <h2>Skills</h2>
+
+                        <div id="about" class="text-center">
+                            Hey! My name is N&iacute;collas Isabel, but everyone calls me Nico.<br />
+                            <span class="about-float">I am a</span>
+                            <div id="box1" class="about-float" ondragover="event.preventDefault()" ondrop="dropWord(event)"><div id="frontEndDeveloper" draggable="true" ondragstart="dragWord(event)">&nbsp;Front End Developer&nbsp;</div></div>
+                            <span class="about-float">and passionate about</span>
+                            <div id="box2" class="about-float" ondragover="event.preventDefault()" ondrop="dropWord(event)"><div id="technology" draggable="true" ondragstart="dragWord(event)">technology</div></div>
+                            <span class="about-float">,</span>
+                            <div id="box3" class="about-float" ondragover="event.preventDefault()" ondrop="dropWord(event)"><div id="cooking" draggable="true" ondragstart="dragWord(event)">cooking</div></div>
+                            <span class="about-float">,</span>
+                            <div id="box4" class="about-float" ondragover="event.preventDefault()" ondrop="dropWord(event)"><div id="videoGames" draggable="true" ondragstart="dragWord(event)">&nbsp;video games&nbsp;</div></div>
+                            <span class="about-float">and also a</span>
+                            <div id="box5" class="about-float" ondragover="event.preventDefault()" ondrop="dropWord(event)"><div id="pokemonTrainer" draggable="true" ondragstart="dragWord(event)">&nbsp;Pok&eacute;mon trainer</div></div>
+                            <span class="about-float">.</span>
+                        </div>
+
+                        <div id="hexagon" class="col-lg-4 col-md-offset-1 col-md-4 col-xs-offset-4 col-xs-8" style="position: relative;">
+                            <span id="skill1" style="position: absolute; top: -30px; left:150px; font-size: 1.4em;">html</span>
+                            <span id="skill2" style="position: absolute; top: 65px; left: 320px; font-size: 1.4em;">css</span>
+                            <span id="skill3" style="position: absolute; top: 225px; left: 320px; font-size: 1.4em;">javascript</span>
+                            <span id="skill4" style="position: absolute; top: 310px; left: 145px; font-size: 1.4em;">java</span>
+                            <span id="skill5" style="position: absolute; top: 225px; left: -75px; font-size: 1.4em;">android</span>
+                            <span id="skill6" style="position: absolute; top: 65px; left: -65px; font-size: 1.4em;">vb.net</span>
+                            <svg height="300" width="300">
+                                <!-- Outer Polygon -->
+                                <polygon points="150,0 300,75 300,225 150,300 0,225 0,75" style="fill: #e8e8e8; stroke: black; stroke-width: 1;"></polygon>
+                                <!-- Inner Polygon (skills) -->
+                                <polygon id="skills-polygon" points="150,20 280,85 260,205 150,225 70,190 70,110" style="fill: #6528a1;"></polygon>
+
+                                <!-- (Skill 5 : Skill 2) slope: y = -x/2 + 225 -->
+                                <!-- (Skill 6 : Skill 3) slope: y = x/2 + 75 -->
+                                <line x1="150" y1="150" x2="150" y2="0" style="stroke:black;stroke-width:1" />
+                                <line x1="150" y1="150" x2="300" y2="75" style="stroke:black;stroke-width:1" />
+                                <line x1="150" y1="150" x2="300" y2="225" style="stroke:black;stroke-width:1" />
+                                <line x1="150" y1="150" x2="150" y2="300" style="stroke:black;stroke-width:1" />
+                                <line x1="150" y1="150" x2="0" y2="225" style="stroke:black;stroke-width:1" />
+                                <line x1="150" y1="150" x2="0" y2="75" style="stroke:black;stroke-width:1" />
+                            </svg>
+                        </div>
+
+                        <div id="skill-description" class="col-lg-offset-2 col-lg-5 col-md-offset-2 col-md-5 col-xs-12" style="background-color: #636363; height: 480px; color: #ffffff;">
+                            <p style="text-align: center; padding-top: 20px; font-size: 3em;">Front End Developer</p>
+                            <p style="font-size: 2em;">With over 4 years of coding exeperience, I already had the oportunity to work with Frontend, Backend and Android development, using many different technologies.</p>
+                            <p style="font-size: 2em;">Always trying to learn new stuff, I'm currently sharping my skills in Ruby and Angular.js.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about-section" style="background: #fafafa; padding-bottom: 30px; padding-top: 30px;">
+                <div class="container">
+                    <div class="row">
+                        <div style="width: 20px; margin: 0 auto; height: 500px;">
+                            <div style="position: relative; width: 100%;">
+                                <div style="position: absolute; top: 0; left: -330px; width: 300px; text-align: right;">
+                                    <p style="font-size: 1.2em; font-weight: bold;">Ampla 2014</p>
+                                    <p style="font-size: .9em;">Software Developer and Project Manager</p>
+                                    <p>Manager of Remote Control Project, which helped the Company save </p>
+                                </div>
+                                <div style="position: absolute; top: 163px; left: 50px; width: 300px; text-align: left;">
+                                    <p style="font-size: 1.2em; font-weight: bold;">Ampla 2014</p>
+                                    <p style="font-size: .9em;">Software Developer and Project Manager</p>
+                                    <p>Manager of Remote Control Project, which helped the Company save </p>
+                                </div>
+                                <div style="position: absolute; top: 297px; left: -330px; width: 300px; text-align: right;">
+                                    <p style="font-size: 1.2em; font-weight: bold;">Ampla 2014</p>
+                                    <p style="font-size: .9em;">Software Developer and Project Manager</p>
+                                    <p>Manager of Remote Control Project, which helped the Company save </p>
+                                </div>
+                            </div>
+                            <svg style="width: 20px; height: 500px; margin: 0 auto;">
+                                <line x1="10" y1="0" x2="10" y2="500" style="stroke: black;"></line>
+                                <circle cx="10" cy="7" r="7"></circle>
+                                <circle cx="10" cy="170" r="7"></circle>
+                                <circle cx="10" cy="304" r="7"></circle>
+                                <circle cx="10" cy="493" r="7"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- THIS CODE IS COMMENTED DUE TO DEVELOPMENT TESTING. IT MUST NOT BE DELETED. -->
+        <div class="contact">
+            <section id="contact-section" style="background-color: white;">
+                <div class="container">
+                    <div class="row" style="padding-bottom: 30px; text-align: center;">
+                        <div class="contact-header" style="text-align: center; margin-bottom: 60px;">
+                            <h1 style="font-size: 6em;">Feel that <span style="color: red;">tingling</span> in your fingertips?</h1>
+                            <p style="font-size: 3em;">That's the magnetic urge to contact me!</p>
+                            <p style="font-size: 1.5em; width: 70%; margin: 0 auto;">
+                                <span>If you are looking for a passionate developer, who always wants to learn new technologies, as well as improve his skills and whises to do something</span>
+                                <span>meaningful at his job, then you should definetly get in touch!</span>
+                            </p>
+                        </div>
+                        <div id="cantact-ways">
+                            <div class="col-md-3 col-xs-6">
+                                <div style="height: 300px;">
+                                    <div style="height: 100px; width: 100px; margin: 0 auto;">
+                                        <a href="https://www.facebook.com/nicollas.isabel/" target="_blank"><img src="Resources/facebook-icon-100.png" class="img-responsive" /></a>
+                                    </div>
+                                    <hr style="width: 70%; border-color: black">
+                                    <div style="height: 200px; padding-top: 20px;">
+                                        <p style="font-size: 2em;">Facebook</p>
+                                        <span style="font-size: 1.2em;">Where you can see a bit more about myself.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-xs-6">
+                                <div style="height: 350px;">
+                                    <div style="height: 100px; width: 100px; margin: 0 auto;">
+                                        <a href="https://www.linkedin.com/in/nicollasisabel/" target="_blank"><img src="Resources/linkedin-icon-100.png" class="img-responsive" /></a>
+                                    </div>
+                                    <hr style="width: 70%; border-color: black">
+                                    <div style="height: 250px; padding-top: 20px;">
+                                        <p style="font-size: 2em;">LinkedIn</p>
+                                        <span style="font-size: 1.2em;">Wish to meet my professional life and skills? Then, meet me in LinkedIn!</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-xs-6">
+                                <div style="height: 350px;">
+                                    <div style="height: 100px; width: 100px; margin: 0 auto;">
+                                        <a href="https://github.com/nicollasiam/" target="_blank"><img src="Resources/github-icon-100.png" class="img-responsive" /></a>
+                                    </div>
+                                    <hr style="width: 70%; border-color: black">
+                                    <div style="height: 250px; padding-top: 20px;">
+                                        <p style="font-size: 2em;">Github</p>
+                                        <span style="font-size: 1.2em;">A (very) little about my coding history.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-xs-6">
+                                <div style="height: 350px;">
+                                    <div style="height: 100px; width: 100px; margin: 0 auto;">
+                                        <a href="extras/CV - Nicollas Isabel.pdf" target="_blank"><img src="Resources/email-icon-100.png" /></a>
+                                    </div>
+                                    <hr style="width: 70%; border-color: black">
+                                    <div style="height: 250px; padding-top: 20px;">
+                                        <p style="font-size: 2em;">Resume</p>
+                                        <span style="font-size: 1.2em;">Also, feel free to download my Resume!</span>                                        
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="email-section" style="background: #fafafa; padding-bottom: 30px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2>Send me an email</h2>
+                        </div>
+                        <form id="ajax-contact" method="post" action="mailer.php">
+	                        <div class="col-xs-6">                                
+	                            <p style="font-size: 1.3em;">
+	                                Your name:
+	                                <br />
+	                                <span class="your-name">
+	                                    <input type="text" name="your-name" size="40" aria-required="true" aria-invalid="false" />
+	                                </span>
+	                            </p>
+	                            <p style="font-size: 1.3em;">
+	                                Your email:
+	                                <br />
+	                                <span class="your-email">
+	                                    <input type="email" name="your-email" size="40" aria-required="true" aria-invalid="false" />
+	                                </span>
+	                            </p>
+	                        </div>
+
+	                        <div class="col-xs-6">
+	                            <p style="font-size: 1.3em;">
+	                                Your message:
+	                                <br />
+	                                <span class="your-message">
+	                                    <textarea name="your-message" cols="40" rows="10" aria-required="true" aria-invalid="false"></textarea>
+	                                </span>
+	                            </p>
+	                            <p>
+	                                <input type="submit" value="Send Email" class="submit" />
+	                            </p>
+	                        </div>
+                        </form>                        
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="panel-footer" style="background: #f5f5f5; margin-top: 50px; height: 80px; color: #666666; font-size: 16px; font-size: 1.6rem; text-align: center; position: relative; -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1);">
+            <div class="container">
+                <div class="row" style="position: relative; padding-top: 30px;">
+                    <div class="col-xs-12">
+                        <div class="col-md-3 col-sm-4 pull-left">
+                            <a class="pull-left" style="color: #666666; text-decoration: none;" href="#">&copy; 2017 N&iacute;collas Isabel</a>
+                        </div>
+
+                        <nav class="col-md-offset-1 col-md-5 col-sm-5 pull-left">
+                            <ul style="list-style: none;">
+                                <li style="float: left;">
+                                    <a href="#about-section">About</a>
+                                </li>
+                                <li style="float: left;">
+                                    <a href="#projects-section">Projects</a>
+                                </li>
+                                <li style="float: left;">
+                                    <a href="#contact-section">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <div class="col-md-3 col-sm-3 pull-right">
+                            <div class="pull-right" style="height: 30px; width: 30px; margin-left: 20px;">
+                                <a href="https://github.com/nicollasiam/" target="_blank"><img src="Resources/github-icon-100.png" class="img-responsive" /></a>
+                            </div>
+                            <div class="pull-right" style="height: 30px; width: 30px; margin-left: 20px;">
+                                <a href="https://www.linkedin.com/in/nicollasisabel/" target="_blank"><img src="Resources/linkedin-icon-100.png" class="img-responsive" /></a>
+                            </div>
+                            <div class="pull-right" style="height: 30px; width: 30px; margin-left:20px;">
+                                <a href="https://www.facebook.com/nicollas.isabel/" target="_blank"><img src="Resources/facebook-icon-100.png" class="img-responsive" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: absolute; width: 100%; height: 50px; top: -50px; left: 0px; background: #fafafa">             
+                    <a class="top" href="#" style="color: #666666; position: absolute; height: 90px; width: 118px; display: block; left: 50%; margin-left: -50px; bottom: -40px; background: url('Resources/sprite.png') 0 -217px; background-color: transparent; text-indent: -9999px; ">back to top</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
