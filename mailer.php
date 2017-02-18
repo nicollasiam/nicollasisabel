@@ -45,10 +45,13 @@
             echo "Oops! Something went wrong and we couldn't send your message.";
         }
 
-    } else {
+    } else if {
         // Not a POST request, set a 403 (forbidden) response code.
         http_response_code(403);
         echo "There was a problem with your submission, please try again.";
+    } else {
+    	http_response_code(405);
+        echo "Error 405. Please, contact me at nicollasisabel@hotmail.com";
     }
 
 ?>
