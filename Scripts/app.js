@@ -22,11 +22,11 @@ $(function() {
 		})
 		.done(function(response) {
 			// Make sure that the formMessages div has the 'success' class.
-			$(formMessages).removeClass('error');
-			$(formMessages).addClass('success');
+			$('#form-messages').removeClass('error');
+			$('#form-messages').addClass('success');
 
 			// Set the message text.
-			$(formMessages).text(response);
+			$('#form-messages').text(response);
 
 			// Clear the form.
 			$('.your-name input').val('');
@@ -35,14 +35,14 @@ $(function() {
 		})
 		.fail(function(data) {
 			// Make sure that the formMessages div has the 'error' class.
-			$(formMessages).removeClass('success');
-			$(formMessages).addClass('error');
+			$('#form-messages').removeClass('success');
+			$('#form-messages').addClass('error');
 
 			// Set the message text.
 			if (data.responseText !== '') {
-				$(formMessages).text(data.responseText);
+				$('#form-messages').text(data.responseText);
 			} else {
-				$(formMessages).text('Oops! An error occured and your message could not be sent.');
+				$('#form-messages').text('Oops! An error occured and your message could not be sent.');
 			}
 		});
 
