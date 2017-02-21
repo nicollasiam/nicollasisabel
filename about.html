@@ -1,0 +1,184 @@
+<html>
+<head>
+    <title>I'm Nico!</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="styles/bootstrap.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+
+    <!-- Javascript files -->
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/script.js"></script>
+    <script src="Scripts/data.js"></script>
+    <script src="Scripts/d3.min.js"></script>
+</head>
+
+<body ondragover="event.preventDefault()">
+    <div id="page-header" class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header hidden-sm">
+                <a href="index.html" class="navbar-brand">
+                    Nico
+                </a>
+
+                <button id="navbarButton" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-options" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links to be shown -->
+            <div id="collapse-options" class="collapse navbar-collapse">
+                <ul id="nav-list" class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a href="index.html">hi!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="projects.html">projects</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="about.html">about</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html">contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="about">
+        <section id="about-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-4 left">
+                        <h2>about me</h2>
+                        <p>I'm a Front End Developer<br />from Rio de Janeiro, Brazil.</p>
+
+                        <span>I enjoy coding beautiful, interactive layouts and even adventure myself in the backend world.</span>
+                        <span>When I'm not coding, you can always find me in the virtual world or in the kitchen.</span>
+                    </div>
+                    <div class="col-xs-offset-2 col-xs-6 right">
+                        <!--Display some photo-->
+                        <img src="Resources/person.png" class="img-responsive" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skill-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 skill-tag">
+                        <h2>skills</h2>
+                    </div>
+                    <div class="col-xs-4">
+
+                        <div class="skill-label" ondragover="event.preventDefault()" ondrop="dropWord(event)">Front End Developer</div>
+
+                        <ul>
+                            <li ondragover="event.preventDefault()" draggable="true" ondragstart="dragWord(event)">Front End Developer</li>
+                            <li ondragover="event.preventDefault()" draggable="true" ondragstart="dragWord(event)">Cooking</li>
+                            <li ondragover="event.preventDefault()" draggable="true" ondragstart="dragWord(event)">Video Games</li>
+                            <li ondragover="event.preventDefault()" draggable="true" ondragstart="dragWord(event)">Pok&eacute;mon Trainer</li>
+                        </ul>
+                    </div>
+
+                    <div id="hexagon" class="col-xs-offset-3 col-xs-5">
+                        <span class="skill1">html</span>
+                        <span class="skill2">css</span>
+                        <span class="skill3">javascript</span>
+                        <span class="skill4">java</span>
+                        <span class="skill5">android</span>
+                        <span class="skill6">vb.net</span>
+                        <svg height="300" width="300">
+                            <!-- Outer Polygon -->
+                            <polygon class="outer-polygon" points="150,0 300,75 300,225 150,300 0,225 0,75"></polygon>
+                            <!-- Inner Polygon (skills) -->
+                            <polygon id="skills-polygon" points="150,20 280,85 260,205 150,225 70,190 70,110"></polygon>
+
+                            <!-- (Skill 5 : Skill 2) slope: y = -x/2 + 225 -->
+                            <!-- (Skill 6 : Skill 3) slope: y = x/2 + 75 -->
+                            <line x1="150" y1="150" x2="150" y2="0" />
+                            <line x1="150" y1="150" x2="300" y2="75" />
+                            <line x1="150" y1="150" x2="300" y2="225" />
+                            <line x1="150" y1="150" x2="150" y2="300" />
+                            <line x1="150" y1="150" x2="0" y2="225" />
+                            <line x1="150" y1="150" x2="0" y2="75" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="random-facts">
+            <div class="container">
+                <div class="row">
+                    <div id="dog-img" class="col-xs-6">
+                        <!-- Display some pic -->
+                        <img src="Resources/dog_chocolate.jpg" class="img-responsive" />
+                    </div>
+                    <div class="col-xs-6">
+                        <p>Random Facts</p>
+                        <ul>
+                            <li>I absolutely love dogs</li>
+                            <li>I want to be a Pok&eacute;mon Trainer</li>
+                            <li>I want to have super mutant memory</li>
+                            <li>I am addicted to chocolate</li>
+                            <li>I hate the green color</li>
+                            <li>I have arachnophobia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="panel-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="copyright" class="col-md-3 col-sm-4 pull-left">
+                        <a class="pull-left" href="#">&copy; 2017 N&iacute;collas Isabel</a>
+                    </div>
+
+                    <nav class="col-md-offset-1 col-md-5 col-sm-5 pull-left">
+                        <ul>
+                            <li>
+                                <a href="#about-section">About</a>
+                            </li>
+                            <li>
+                                <a href="#projects-section">Projects</a>
+                            </li>
+                            <li>
+                                <a href="#contact-section">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="col-md-3 col-sm-3 pull-right">
+                        <div class="pull-right footer-logo">
+                            <a href="https://github.com/nicollasiam/" target="_blank"><img src="Resources/github-icon-100.png" class="img-responsive" /></a>
+                        </div>
+                        <div class="pull-right footer-logo">
+                            <a href="https://www.linkedin.com/in/nicollasisabel/" target="_blank"><img src="Resources/linkedin-icon-100.png" class="img-responsive" /></a>
+                        </div>
+                        <div class="pull-right footer-logo">
+                            <a href="https://www.facebook.com/nicollas.isabel/" target="_blank"><img src="Resources/facebook-icon-100.png" class="img-responsive" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="top-arrow" style="background: #ffffff">
+                <a href="#">back to top</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

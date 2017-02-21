@@ -1,16 +1,6 @@
 $(function () {
 
-    /************************************************/
-    /********** COLLAPSE NAVBAR PROCEDURE ***********/
-    /* Collapses the navbar when its focus **********/
-    /* is lost **************************************/
-    /************************************************/
-
-    $("#navbarButton").blur(function (event) {
-        if (window.innerWidth < 768) {
-            $("#collapse-options").collapse('hide');
-        }
-    });
+    
 
     /***************************************/
     /********** ACTIVE PROCEDURE ***********/
@@ -18,113 +8,151 @@ $(function () {
     /* correct navbar item *****************/
     /***************************************/
 
-    $("#nav-list a").on("click", function () {
-        $("#nav-list").find(".active").removeClass("active");
-        $(this).parent().addClass("active");
-    });
+    //$("#nav-list a").on("click", function () {
+    //    $("#nav-list").find(".active").removeClass("active");
+    //    $(this).parent().addClass("active");
+    //});
 
-    /************************************************/
-    /********** ALTERNATE IMAGE PROCEDURE ***********/
-    /* Sets the first image and then ****************/
-    /* changes randomly to other images *************/
-    /************************************************/
-    $("#photo").attr("src", "Resources/haunter.png");
-    window.setInterval(function () {
-        $("#photo").fadeOut(2000, "swing", function () {
-            $("#photo").attr("src", pics[Math.floor(Math.random() * pics.length)]);
-            $("#photo").fadeIn(1000, "swing");
-        });
-    }, 7000);    
+    
+
+    
+
+    
+
+    var executeTransitions = function () {
+
+        $("#page-header")[0].style.top = 0
+
+        /************************************************/
+        /********** COLLAPSE NAVBAR PROCEDURE ***********/
+        /* Collapses the navbar when its focus **********/
+        /* is lost **************************************/
+        /************************************************/
+        $("#navbarButton").blur(function (event) {
+            if (window.innerWidth < 768) {
+                $("#collapse-options").collapse('hide');
+            }
+        });        
+
+        switch (location.pathname.split("/")[location.pathname.split("/").length - 1]) {
+            case "index.html":
+                /************************************************/
+                /********** ALTERNATE IMAGE PROCEDURE ***********/
+                /* Sets the first image and then ****************/
+                /* changes randomly to other images *************/
+                /************************************************/
+                $("#photo").attr("src", "Resources/haunter.png");
+                window.setInterval(function () {
+                    $("#photo").fadeOut(2000, "swing", function () {
+                        $("#photo").attr("src", pics[Math.floor(Math.random() * pics.length)]);
+                        $("#photo").fadeIn(1000, "swing");
+                    });
+                }, 7000);
+
+                /**********************************************/
+                /* Make a transition at starting **************/
+                /* text and image** ***************************/
+                /**********************************************/
+                $(".left")[0].style.left = 0;
+                $(".right")[0].style.right = 0;
+                break;
+                break;
+
+            case "about.html":
+                /************************************************/
+                /********** MOVE IMAGE TO THE RIGHT  ************/
+                /* Set the image left prop. to 0 ****************/
+                /* moving it from left to right *****************/
+                /************************************************/
+                $(window).scroll(function () {
+                    if (($(window).scrollTop() + $(window).outerHeight()) >= ($("#random-facts img").offset().top + ($("#random-facts img").height() / 3))) { // Check if 1/3 of the image is in the viewport
+                        $("#random-facts img")[0].style.left = 0;
+                    }
+                });
+
+                /********************************************/
+                /********** REMOVE HIGHLIGHT  ***************/
+                /* Remove the highlitghted css **************/
+                /* from skill-div ***************************/
+                /********************************************/
+                $("body").on("drop", function () {
+                    document.getElementsByClassName("skill-label")[0].style.boxShadow = "inset 0 0 0 0 rgba(0,0,0,0)";
+                });
+
+                /**********************************************/
+                /* Make a transition at starting **************/
+                /* text and image** ***************************/
+                /**********************************************/
+                $(".left")[0].style.left = 0;
+                $(".right")[0].style.right = 0;
+                break;
+
+            case "projects.html":
+                break;
+
+            case "contact.html":
+                break;
+        }
+    }();
 });
 
 /*******************************************/
 /********** SWAP WORDS PROCEDURE ***********/
 /* Chage icons shown, according to the *****/
-/* word placed in #box1 ********************/
+/* word placed in div **********************/
 /*******************************************/
 
 function dragWord(dragEvent) {
-    dragEvent.dataTransfer.setData("text/html", dragEvent.target.textContent + "|" + dragEvent.target.parentNode.id);
+    dragEvent.dataTransfer.setData("text", dragEvent.target.textContent);
+
+    document.getElementsByClassName("skill-label")[0].style.boxShadow = "inset 0 0 10px 5px rgba(21,119,40,0.1)";
 }
 
 function dropWord(dropEvent) {
-    var dropData = dropEvent.dataTransfer.getData("text/html");
-    var dropItems = dropData.split("|");
-    var prevElem = document.getElementById(dropItems[1]);
+    var dropData = dropEvent.dataTransfer.getData("text");
+    
+    // Check if the word droped is allowed to be dropped
+    if (dropData.trim().toLowerCase() == "front end developer" ||
+        dropData.trim().toLowerCase() == "cooking" ||
+        dropData.trim().toLowerCase() == "video games" ||
+        dropData.trim().toLowerCase() == "pokémon trainer") {
 
-    // Remove spaces so I can edit properly
-    // depending on the place taken/droped
-    var switchedWord = dropEvent.target.textContent.trim();
-    var dropedWord = dropItems[0].trim();
-
-    // Check the place where the word will be droped
-    // to properly edit the word
-    switch (dropEvent.target.parentNode.id) {
-        case "box2":
-        case "box3":
-        case "box5":
-            dropedWord = "&nbsp;" + dropedWord;
-            break;
-
-        case "box1":
-        case "box4":
-            dropedWord = "&nbsp;" + dropedWord + "&nbsp;";
-            break;
+        document.getElementsByClassName("skill-label")[0].textContent = dropData;
     }
+    
 
-    // Check the place where the word was taken from
-    // to properly edit the word
-    switch (prevElem.id) {
-        case "box2":
-        case "box3":
-        case "box5":
-            switchedWord = "&nbsp;" + switchedWord;
-            break;
-
-        case "box1":
-        case "box4":
-            switchedWord = "&nbsp;" + switchedWord + "&nbsp;";
-            break;
-    }
-
-    // Insert switched word in origin node
-    prevElem.getElementsByTagName("div")[0].innerHTML = switchedWord;
-    // Insert droped word in target node
-    document.getElementById(dropEvent.target.id).innerHTML = dropedWord;
-    dropEvent.preventDefault();
-
-    // Check which word is placed in '#box1' div
-    switch (document.getElementById("box1").getElementsByTagName("div")[0].textContent.trim().toLowerCase()) {        
+    // Check which word is placed in '.skill-label' div
+    switch (document.getElementsByClassName("skill-label")[0].textContent.trim().toLowerCase()) {
         case "front end developer":
             ChangeSkillNames(frontend);
             AnimatePolygon(frontend);
-            document.getElementById("skill1").style.left = "150px";
-            document.getElementById("skill5").style.left = "-75px";
-            break;
-
-        case "technology":            
-            document.getElementById("secondDiv").style.backgroundColor = "#00ff00";
+            document.getElementsByClassName("skill1")[0].style.left = "140px";
+            document.getElementsByClassName("skill4")[0].style.left = "140px";
+            document.getElementsByClassName("skill5")[0].style.left = "-85px";
             break;
 
         case "cooking":
             ChangeSkillNames(cooking);
             AnimatePolygon(cooking);
-            document.getElementById("skill1").style.left = "110px";
-            document.getElementById("skill5").style.left = "-45px";
+            document.getElementsByClassName("skill1")[0].style.left = "95px";
+            document.getElementsByClassName("skill4")[0].style.left = "130px";
+            document.getElementsByClassName("skill5")[0].style.left = "-65px";
             break;
 
         case "video games":
             ChangeSkillNames(videogame);
             AnimatePolygon(videogame);
-            document.getElementById("skill1").style.left = "115px";
-            document.getElementById("skill5").style.left = "-35px";
+            document.getElementsByClassName("skill1")[0].style.left = "95px";
+            document.getElementsByClassName("skill4")[0].style.left = "130px";
+            document.getElementsByClassName("skill5")[0].style.left = "-35px";
+            document.getElementsByClassName("skill6")[0].style.left = "-75px";
             break;
 
         case "pokémon trainer":
             ChangeSkillNames(pokemon);
             AnimatePolygon(pokemon);
-            document.getElementById("skill1").style.left = "120px";
-            document.getElementById("skill5").style.left = "-75px";
+            document.getElementsByClassName("skill1")[0].style.left = "105px";
+            document.getElementsByClassName("skill5")[0].style.left = "-95px";
             break;
     }
 
@@ -146,11 +174,11 @@ function dropWord(dropEvent) {
 
     // Method to change skill names
     function ChangeSkillNames(abilityObject) {
-        document.getElementById("skill1").innerHTML = abilityObject.skill1.name;
-        document.getElementById("skill2").innerHTML = abilityObject.skill2.name;
-        document.getElementById("skill3").innerHTML = abilityObject.skill3.name;
-        document.getElementById("skill4").innerHTML = abilityObject.skill4.name;
-        document.getElementById("skill5").innerHTML = abilityObject.skill5.name;
-        document.getElementById("skill6").innerHTML = abilityObject.skill6.name;
+        document.getElementsByClassName("skill1")[0].innerHTML = abilityObject.skill1.name;
+        document.getElementsByClassName("skill2")[0].innerHTML = abilityObject.skill2.name;
+        document.getElementsByClassName("skill3")[0].innerHTML = abilityObject.skill3.name;
+        document.getElementsByClassName("skill4")[0].innerHTML = abilityObject.skill4.name;
+        document.getElementsByClassName("skill5")[0].innerHTML = abilityObject.skill5.name;
+        document.getElementsByClassName("skill6")[0].innerHTML = abilityObject.skill6.name;
     }
 }
