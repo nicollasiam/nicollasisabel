@@ -230,12 +230,11 @@ line {
 #random-facts img {
     transition: all .8s;
 }
-#random-facts img {
-    position:absolute;
-    left: -100%;
-}
 #dog-img {
     position: relative;
+}
+#dog-img img {
+    position: absolute;
 }
 #random-facts p {
     font-size: 2rem;
