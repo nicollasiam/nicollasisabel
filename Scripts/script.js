@@ -110,13 +110,12 @@ function dragWord(dragEvent) {
 
 function dropWord(dropEvent) {
     var dropData = dropEvent.dataTransfer.getData("text");
-    
-    console.log(dropData.trim().toLowerCase());
+
     // Check if the word droped is allowed to be dropped
     if (dropData.trim().toLowerCase() == "front end developer" ||
         dropData.trim().toLowerCase() == "cooking" ||
         dropData.trim().toLowerCase() == "video games" ||
-        dropData.trim().toLowerCase() == "pokémon trainer") {
+        dropData.trim().toLowerCase() == "pokemon trainer") {
 
         document.getElementsByClassName("skill-label")[0].textContent = dropData;
     }
