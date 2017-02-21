@@ -148,7 +148,7 @@ function dropWord(dropEvent) {
             document.getElementsByClassName("skill6")[0].style.left = "-75px";
             break;
 
-        case "pokémon trainer":
+        case "pokemon trainer":
             ChangeSkillNames(pokemon);
             AnimatePolygon(pokemon);
             document.getElementsByClassName("skill1")[0].style.left = "105px";
