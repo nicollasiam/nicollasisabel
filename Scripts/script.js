@@ -115,7 +115,7 @@ function dropWord(dropEvent) {
     if (dropData.trim().toLowerCase() == "front end developer" ||
         dropData.trim().toLowerCase() == "cooking" ||
         dropData.trim().toLowerCase() == "video games" ||
-        dropData.trim().toLowerCase() == "pokemon trainer") {
+        dropData.trim().toLowerCase() == "pokémon trainer") {
 
         document.getElementsByClassName("skill-label")[0].textContent = dropData;
     }
@@ -148,7 +148,7 @@ function dropWord(dropEvent) {
             document.getElementsByClassName("skill6")[0].style.left = "-75px";
             break;
 
-        case "pokemon trainer":
+        case "pokémon trainer":
             ChangeSkillNames(pokemon);
             AnimatePolygon(pokemon);
             document.getElementsByClassName("skill1")[0].style.left = "105px";
